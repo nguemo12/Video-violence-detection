@@ -2,8 +2,12 @@ from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
 import cv2
 import numpy as np
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
 
 # Load the trained model
 model = load_model("modelnew.h5")
