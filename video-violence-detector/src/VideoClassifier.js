@@ -59,10 +59,20 @@ const VideoClassifier = () => {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.heading}>Video Classifier</h2>
+      <h2 style={styles.heading}>Video violence detection</h2>
       
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
+      {thepath && (
+        <div>
+          <p>Preview:</p>
+          <video width="320" height="240" controls>
+            <source src={thepath} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+
       <button onClick={classifyVideo} style={styles.button} disabled={loading}>
         {loading ? <FaSpinner className="spinner" /> : 'Classify Video'}
       </button>
